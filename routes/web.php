@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('menu');
+    return view('/all_systems');
 });
 Route::get('/departments', 'DepartmentController@index');
 Route::post('new_department', 'DepartmentController@store');

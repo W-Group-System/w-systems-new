@@ -55,8 +55,14 @@ class SystemController extends Controller
         return view('system_setup.show', compact('department'));
     }
 
-    public function all_systems() {
-        $all_systems = System::all();
+    public function all_systems(Request $request) {
+        $query = System::query();
+         if ($request->filled('department')) {
+           $query->whereJsonContains('department_id', $request->department);
+        }
+        // $all_systems = System::all();
+        $all_systems = $query->get();
+        $departments = Department::all();
         return view( 'system_setup.all_systems', compact('all_systems'));
     }
 
