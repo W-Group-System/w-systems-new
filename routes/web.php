@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('/all_systems');
-});
+// Route::get('/', function () {
+//     return view('system_setup.all_systems');
+// });
 Route::get('/departments', 'DepartmentController@index');
 Route::post('new_department', 'DepartmentController@store');
 Route::post('edit_department/{id}', 'DepartmentController@edit');
@@ -27,6 +27,7 @@ Route::post('delete/system/{id}', 'SystemController@delete');
 
 Route::get('/system/{name}/{id}', 'SystemController@show');
 Route::get('/all_systems', 'SystemController@all_systems');
+Route::get('/', 'SystemController@all_systems');
 
 
 
