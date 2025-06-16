@@ -37,7 +37,7 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     
 
-    {{-- <style>
+    <style>
         .loader {
             position: fixed;
             left: 0px;
@@ -45,11 +45,11 @@
             width: 100%;
             height: 100%;
             z-index: 9999;
-            background: url("{{ asset('/images/3.gif')}}") 50% 50% no-repeat rgb(249,249,249) ;
+            background: url("{{ asset('/assets/img/loader.gif')}}") 50% 50% no-repeat rgb(249,249,249) ;
             opacity: .8;
-            background-size:200px 120px;
+            background-size:180px 160px;
         }
-    </style> --}}
+    </style>
 </head>
 <style>
   .dataTables_wrapper .dataTables_info {
@@ -175,7 +175,13 @@
         function show() {
             document.getElementById("myDiv").style.display="block";
         }
-        
+        window.addEventListener('load', function () {
+            document.getElementById("myDiv").style.display = "none";
+        });
+
+        window.addEventListener('pageshow', function (event) {
+            document.getElementById("myDiv").style.display = "none";
+        });
     </script>
 </body>
 </html>

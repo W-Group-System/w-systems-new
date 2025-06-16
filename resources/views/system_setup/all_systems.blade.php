@@ -28,7 +28,33 @@
     @if($all_systems->count())
         <div class="row">
             @foreach($all_systems as $system)
-                <div class="col-xl-3 col-sm-6 mb-4">
+            <div class="col-md-3 mt-md-0 mb-4">
+                 <a href="{{  url($system->link) }}" onclick="show()">
+                    <div class="card">
+                    <div class="card-header mx-4 p-3 text-center">
+                       <div class="icon icon-shape icon-lg bg-gradient-warning shadow text-center border-radius-lg d-flex align-items-center justify-content-center mx-auto" style="height: 90px; width: 90px;">
+                        <img src="{{ asset('storage/' . $system->logo) }}"
+                            alt="System Logo"
+                            class="img-fluid rounded-circle"
+                            style="height: 90px; width: 90px; object-fit: contain;">
+                      </div>
+                    </div>
+                    <div class="card-body pt-0 p-3 text-center">
+                        @php
+                            $description = $system->description ?? '';
+                            $words = explode(' ', $description);
+                            $limited = implode(' ', array_slice($words, 0, 12));
+                        @endphp
+                      <p class="text-center mb-0"  title="{{ $description }}" style="min-height: 3em; overflow: hidden; font-size: 12px;"> 
+                        {{ count($words) > 10 ? $limited . '...' : $description }}
+                      </p>
+                      <hr class="horizontal dark my-3">
+                      <h5 class="mb-0">{{ $system->name }}</h5>
+                    </div>
+                  </div>
+                 </a>
+                </div>
+                {{-- <div class="col-xl-3 col-sm-6 mb-4">
                     <a href="{{  url($system->link) }}">
                         <div class="card" style="min-height: 150px;">
                             <div class="card-body p-3">
@@ -61,7 +87,7 @@
                             </div>
                         </div>
                     </a>
-                </div>
+                </div> --}}
             @endforeach
         </div>
     @else
