@@ -60,10 +60,18 @@ class SystemController extends Controller
          if ($request->filled('department')) {
            $query->whereJsonContains('department_id', $request->department);
         }
+
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                ->orWhere('description', 'like', "%{$search}%");
+            });
+        }
         // $all_systems = System::all();
         $all_systems = $query->get();
         $departments = Department::all();
-        return view( 'system_setup.all_systems', compact('all_systems'));
+        return view( 'system_setup.all_systems', compact('all_systems', 'departments'));
     }
 
     public function delete($id)

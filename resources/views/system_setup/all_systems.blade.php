@@ -8,22 +8,32 @@
     <h2 class="text-white">W Group Systems</h2>
 </div>
 <div class="container mt-4">
-    <div>
-        <form method="GET" action="">
-            <div class="row align-items-center mb-3">
-                <div class="col-md-4">
-                    <label for="department" class="form-label text-white">Filter by Department</label>
-                    <select name="department" id="department" class="form-control select2" onchange="this.form.submit()">
-                        <option value="">All Departments</option>
-                        @foreach($departments as $dept)
-                            <option value="{{ $dept->id }}" {{ request('department') == $dept->id ? 'selected' : '' }}>
-                                {{ $dept->name }}
-                            </option>
-                        @endforeach
-                    </select>
+    <div class="row mb-3">
+        <div class="col-6">
+            <form method="GET" action="">
+                <div class="row align-items-center mb-3">
+                    <div class="col-md-6">
+                        {{-- <label for="department" class="form-label text-white">Filter by Department</label> --}}
+                        <select name="department" id="department" class="form-control select2" onchange="this.form.submit()">
+                            <option value="">All Departments</option>
+                            @foreach($departments as $dept)
+                                <option value="{{ $dept->id }}" {{ request('department') == $dept->id ? 'selected' : '' }}>
+                                    {{ $dept->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
+        <div class="col-6 d-flex justify-content-end align-items-center">
+            <form method="GET" class="w-100 d-flex justify-content-end" onsubmit="show()">
+                <div class="input-group w-60">
+                    <input type="text" class="form-control" style="height:40px" name="search" placeholder="Search" value="{{ request('search') }}">
+                    <button class="btn btn-info" type="submit">Search</button>
+                </div>
+            </form>
+        </div>
     </div>
     @if($all_systems->count())
         <div class="row">
