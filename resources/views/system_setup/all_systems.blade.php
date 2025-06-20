@@ -14,7 +14,7 @@
                 <div class="row align-items-center mb-3">
                     <div class="col-md-6">
                         {{-- <label for="department" class="form-label text-white">Filter by Department</label> --}}
-                        <select name="department" id="department" class="form-control select2" onchange="this.form.submit()">
+                        <select name="department" id="department" class="form-control select2" onchange="this.form.submit(); this.form.show()">
                             <option value="">All Departments</option>
                             @foreach($departments as $dept)
                                 <option value="{{ $dept->id }}" {{ request('department') == $dept->id ? 'selected' : '' }}>

@@ -68,6 +68,29 @@
     color: white;
   }
 
+  .video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.main-content {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    color: white; /
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.4); Optional: dark overlay
+}
+
 </style>
 <body class="g-sidenav-show   bg-gray-300">
     <div id = "myDiv" style="display:none;" class="loader"></div>
@@ -123,6 +146,10 @@
         </div>
       </aside> --}}
     <main class="main-content position-relative border-radius-lg ">
+       <video autoplay muted loop playsinline class="video-background">
+        <source src="{{ asset('assets/img/bg.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
         <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
             <div class="container-fluid py-1 px-3">
               <nav aria-label="breadcrumb">
